@@ -1,0 +1,10 @@
+{
+  "expo": {
+    "name": "adventureMobile",
+    "slug": "adventureMobile",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}

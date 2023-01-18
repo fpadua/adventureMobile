@@ -5,14 +5,12 @@ import Home from '../../pages/Home';
 import Perfil from '../../pages/Perfil';
 import Constants from 'expo-constants';
 import { useEffect, useRef, useState } from 'react';
-import Login from '../../pages/Login';
 
 const initialLayout = {
   width: Dimensions.get('window').width
 };
 
 const _routes = {
-  login: Login,
   home: Home,
   perfil: Perfil
 }
@@ -22,11 +20,9 @@ const renderScene = SceneMap(_routes);
 function Tabs() {
   const [index, setIndex] = useState(0);
   const [routes] = useState([
-    { key: 'login', title: 'Login' },
     { key: 'home', title: 'Home' },
     { key: 'perfil', title: 'Perfil' }
   ]);
-
 
   const renderTabBar = ({ navigationState }) => {
     const inputRange = navigationState.routes.map((x, i) => i);

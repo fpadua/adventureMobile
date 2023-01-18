@@ -1,13 +1,9 @@
-import { HStack, VStack, Text, Button, ZStack } from "native-base";
-import { useState } from "react";
-import { StyleSheet, Image, View, ImageBackground, Dimensions } from "react-native";
+import { VStack, Text, Button, ZStack, Box } from "native-base";
+import { Image } from "react-native";
 import { useNavigation, useRoute } from '@react-navigation/native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import logo from '../../../assets/images/logo.png';
 
-import { theme } from '../../../assets/theme/default'
-import Tabs from "../../components/Tabs";
-import { Main } from './styles'
+import Styles from './styles'
 
 import background from '../../../assets/images/bg_home.png';
 
@@ -15,27 +11,29 @@ function Login() {
   const navigation = useNavigation();
   const route = useRoute();
 
-  const navegar = () => {
-    navigation.navigate('Home')
-  }
   return (
     <SafeAreaView>
-      <ZStack style={styles.main}>
-        <Image source={background} style={styles.imagem} />
-        <VStack px={15} style={styles.container}>
+      <ZStack style={Styles.main}>
+        <Image source={background} style={Styles.imagem} />
+        <VStack px={15} style={Styles.container}>
+          <Box>
+            <Box style={Styles.boxTitle}>
+              <Text style={Styles.title}>Adventure is</Text>
+              <Text style={Styles.title}>worthwhile!</Text>
+            </Box>
+            <Box style={Styles.boxSubtitle}>
+              <Text style={Styles.subtitle}>
+                Find and try a new experience with just a few clicks
+              </Text>
+            </Box>
+          </Box>
           <Button
-            onPress={navegar}
-            success
-            small
-          >
-            <Text style={styles.buttonText}>Ir para Home</Text>
-          </Button>
-          <Button
+            style={Styles.button}
             onPress={() => navigation.navigate('Tabs')}
             success
             small
           >
-            <Text style={styles.buttonText}>Tabs</Text>
+            <Text style={Styles.buttonText}>Get started</Text>
           </Button>
         </VStack>
       </ZStack>
@@ -43,29 +41,6 @@ function Login() {
   )
 }
 
-const styles = StyleSheet.create({
-  main: {
-    width: Dimensions.get('screen').width,
-    height: Dimensions.get('screen').height,
-  },
-  container: {
-    flex: 1,
-  },
-  imagem: {
-    height: Dimensions.get('screen').height,
-    width: Dimensions.get('screen').width,
-    resizeMode:'cover',
-  },
-  button: {
-    width: 100,
-    background: theme.colors.blue,
-    padding: '5px 10px'
-    // width: 3,
-    // zIndex: 1
-  },
-  buttonText: {
-    color: theme.colors.text[500],
-  }
-});
+
 
 export default Login;

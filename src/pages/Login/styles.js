@@ -9,8 +9,3 @@ export const Main = styled(VStack)`
   align-items: center;
 `;
 
-export const ImagemTeste = styled.ImageBackground`
-height: 50;
-width: 50;
-`
-

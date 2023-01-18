@@ -20,22 +20,22 @@ function Login() {
   }
   return (
     <SafeAreaView>
-      <ZStack className={styles.main}>
-        <Image source={background} className={styles.imagem} />
-        <VStack px={15} className={styles.container}>
+      <ZStack style={styles.main}>
+        <Image source={background} style={styles.imagem} />
+        <VStack px={15} style={styles.container}>
           <Button
             onPress={navegar}
             success
             small
           >
-            <Text className={styles.buttonText}>Ir para Home</Text>
+            <Text style={styles.buttonText}>Ir para Home</Text>
           </Button>
           <Button
             onPress={() => navigation.navigate('Tabs')}
             success
             small
           >
-            <Text className={styles.buttonText}>Tabs</Text>
+            <Text style={styles.buttonText}>Tabs</Text>
           </Button>
         </VStack>
       </ZStack>
@@ -45,23 +45,16 @@ function Login() {
 
 const styles = StyleSheet.create({
   main: {
-    width: Dimensions.get('window').width,
-    height: Dimensions.get('window').height,
-    flex: 1,
-    flexDirection: 'column',
-    justifyContent: 'center',
-    alignItems: 'center'
+    width: Dimensions.get('screen').width,
+    height: Dimensions.get('screen').height,
   },
   container: {
     flex: 1,
-
   },
   imagem: {
-    flex: 1,
-    width: 'auto',
-    height: '100%',
-    resizeMode: 'contain',
-    justifyContent: 'center'
+    height: Dimensions.get('screen').height,
+    width: Dimensions.get('screen').width,
+    resizeMode:'cover',
   },
   button: {
     width: 100,

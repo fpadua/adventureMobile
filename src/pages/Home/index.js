@@ -84,14 +84,8 @@ const Cards = ({
   )
 }
 
-function Home() {
-  const navigation = useNavigation();
-  const route = useRoute();
+function Home({ navigation, route }) {
   const { colors } = useTheme();
-
-  const navegar = () => {
-    navigation.navigate('Perfil');
-  }
 
   return (
     <SafeAreaView>
@@ -134,7 +128,7 @@ function Home() {
           </HStack>
         </Box>
       </VStack>
-      <TabsCustom />
+      <TabsCustom navigation={navigation} route={route} />
     </SafeAreaView>
   )
 }

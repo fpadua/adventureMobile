@@ -13,7 +13,7 @@ export function Routes() {
         <Stack.Screen name="Login" component={Login} options={{ headerShown: false, statusBarColor: '#f6e2bd' }}  />
         {/* <Stack.Screen name="Tabs" component={Tabs} options={{ headerShown: false }} /> */}
         <Stack.Screen name="Home" component={Home} options={{ headerShown: false }} />
-        {/* <Stack.Screen name="Perfil" component={Perfil} /> */}
+        <Stack.Screen name="Perfil" component={Perfil} options={{ headerShown: false }} />
       </Stack.Navigator>
     </NavigationContainer>
   )

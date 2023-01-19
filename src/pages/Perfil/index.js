@@ -1,21 +1,16 @@
-import { useNavigation, useRoute } from "@react-navigation/native";
 import { Text, Box, Button, VStack } from "native-base"
+import { SafeAreaView } from "react-native-safe-area-context";
+import TabsCustom from "../../components/TabsCustom";
+import { styles } from "../Home/styles";
 
 
-export default function Perfil() {
-  const navigation = useNavigation();
-  const route = useRoute();
-
-  const navegar = () => {
-    navigation.navigate('Home');
-  }
-
+export default function Perfil({ navigation, route }) {
   return (
-    <VStack px={15}>
-      <Text>Perfil</Text>
-      <Button onPress={navegar}>
-        Home
-      </Button>
-    </VStack>
+    <SafeAreaView>
+      <VStack px={15} style={styles.main}>
+        <Text>Perfil</Text>
+        <TabsCustom navigation={navigation} route={route} />
+      </VStack>
+    </SafeAreaView>
   )
 }

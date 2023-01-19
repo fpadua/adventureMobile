@@ -1,16 +1,12 @@
 import { VStack, Text, Button, ZStack, Box, Heading } from "native-base";
 import { Image } from "react-native";
-import { useNavigation, useRoute } from '@react-navigation/native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 import Styles from './styles'
 
 import background from '../../../assets/images/bg_home.png';
 
-function Login() {
-  const navigation = useNavigation();
-  const route = useRoute();
-
+function Login({ navigation }) {
   return (
     <SafeAreaView>
       <ZStack style={Styles.main}>

@@ -11,5 +11,5 @@ export const Container = styled(Box)`
   border-top-left-radius: 30px;
   border-top-right-radius: 30px;
   border-top: 1px solid #333;
-  box-shadow: 1px -5px 15px black;
+  box-shadow: rgba(0,0,0,0.4) 1px 1px 20px;
 `;

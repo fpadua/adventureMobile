@@ -20,7 +20,9 @@ import {
 import { useNavigation, useRoute } from '@react-navigation/native';
 import { Feather } from '@expo/vector-icons'
 import { styles } from './styles';
+import { Heart, MapPin } from 'phosphor-react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import TabsCustom from "../../components/TabsCustom";
 
 const Header = ({ navigation }) => {
   return (
@@ -68,13 +70,13 @@ const Cards = ({
         <VStack space={2}>
           <Text style={styles.textCard}>{title}</Text>
           <HStack alignItems="center">
-            <Icon as={Feather} name='map-pin' mr={1} />
+            <MapPin color="#fff" weight="fill" style={{ marginRight: 2 }} size={14} />
             <Text style={{ width: 90 }}>{locale}</Text>
           </HStack>
         </VStack>
         <VStack>
           <Button style={styles.buttonLike}>
-            <Icon as={Feather} name='heart' color="#04ac89" />
+            <Heart weight="fill" color="#04ac89" size={18} />
           </Button>
         </VStack>
       </HStack>
@@ -93,7 +95,7 @@ function Home() {
 
   return (
     <SafeAreaView>
-      <VStack px={15}>
+      <VStack px={15} style={styles.main}>
         <Header navigation={navigation} />
         <Box>
           <Text style={styles.title}>Discover</Text>
@@ -132,6 +134,7 @@ function Home() {
           </HStack>
         </Box>
       </VStack>
+      <TabsCustom />
     </SafeAreaView>
   )
 }

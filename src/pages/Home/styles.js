@@ -5,8 +5,10 @@ import { theme } from "../../../assets/theme/default";
 
 export const styles = StyleSheet.create({
   main: {
-    height: Dimensions.get('screen').height,
-    width: Dimensions.get('screen').width,
+    height: Dimensions.get('window').height,
+    width: Dimensions.get('window').width,
+    paddingBottom: 60,
+    backgroundColor: '#fff'
   },
   buttonAvatar: {
     backgroundColor: 'transparent'
@@ -54,6 +56,8 @@ export const styles = StyleSheet.create({
     lineHeight: 24,
   },
   buttonLike: {
+    width: 40,
+    height: 40,
     backgroundColor: '#fff',
     borderRadius: 50
   }

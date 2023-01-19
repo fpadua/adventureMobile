@@ -1,4 +1,4 @@
-import { VStack, Text, Button, ZStack, Box } from "native-base";
+import { VStack, Text, Button, ZStack, Box, Heading } from "native-base";
 import { Image } from "react-native";
 import { useNavigation, useRoute } from '@react-navigation/native';
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -17,10 +17,10 @@ function Login() {
         <Image source={background} style={Styles.imagem} />
         <VStack px={15} style={Styles.container}>
           <Box>
-            <Box style={Styles.boxTitle}>
+            <Heading style={Styles.boxTitle}>
               <Text style={Styles.title}>Adventure is</Text>
               <Text style={Styles.title}>worthwhile!</Text>
-            </Box>
+            </Heading>
             <Box style={Styles.boxSubtitle}>
               <Text style={Styles.subtitle}>
                 Find and try a new experience with just a few clicks
@@ -29,7 +29,7 @@ function Login() {
           </Box>
           <Button
             style={Styles.button}
-            onPress={() => navigation.navigate('Tabs')}
+            onPress={() => navigation.navigate('Home')}
             success
             small
           >

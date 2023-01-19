@@ -7,7 +7,6 @@ const Styles = StyleSheet.create({
     flex: 1,
     height: Dimensions.get('screen').height,
     width: Dimensions.get('screen').width,
-    background: 'red'
   },
   container: {
     height: Dimensions.get('window').height,
@@ -20,7 +19,7 @@ const Styles = StyleSheet.create({
     resizeMode:'cover',
   },
   boxTitle: {
-    marginTop: 20
+    marginTop: 40
   },
   title: {
     fontSize: 50,
@@ -29,7 +28,6 @@ const Styles = StyleSheet.create({
     lineHeight: 60
   },
   boxSubtitle: {
-    marginTop: 20
   },
   subtitle: {
     color: '#26254d',
@@ -45,7 +43,7 @@ const Styles = StyleSheet.create({
   buttonText: {
     paddingHorizontal: 20,
     paddingVertical: 0,
-    fontSize: 25,
+    fontSize: 20,
     lineHeight: 30,
     color: theme.colors.white,
   }

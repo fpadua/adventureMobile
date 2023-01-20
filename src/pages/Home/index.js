@@ -8,75 +8,40 @@ import {
   Icon,
   Input,
   useTheme,
-  Heading,
-  Card,
-  CardItem,
-  Body,
-  Content,
-  Container,
-  Divider,
-  Stack
+  ScrollView,
+  SectionList
 } from "native-base";
 import { useNavigation, useRoute } from '@react-navigation/native';
 import { Feather } from '@expo/vector-icons'
+import { useEffect, useRef, useState } from 'react'
 import { styles } from './styles';
 import { Heart, MapPin } from 'phosphor-react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import TabsCustom from "../../components/TabsCustom";
+import { Header } from "../../components/Header";
 
-const Header = ({ navigation }) => {
+const Cards = ({ title, locale, bgColor, height }) => {
+  const ref = useRef(); 
+  
+  const handleLike = () => {
+    
+  }
+
   return (
-    <HStack style={styles.headerMain}>
-      <Icon as={Feather} name="menu" style={styles.iconMenu} size={6} />
-      <Button
-        onPress={() => navigation.navigate('Login')}
-        style={styles.buttonAvatar}
-
-      >
-        <Avatar
-          source={{
-            uri: "https://images.unsplash.com/photo-1607746882042-944635dfe10e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
-          }} >Avatar</Avatar>
-      </Button>
-    </HStack>
-  )
-}
-
-const Search = ({ colors, }) => {
-  return (
-    <Input
-      height={50}
-      variant="rounded"
-      style={[{ ...styles.searchInput, backgroundColor: colors.muted[200] }]}
-      InputRightElement={
-        <Button onPress={() => { }} style={styles.searchButton}>
-          <Icon as={Feather} name="search" size={5} color="primary.50" />
-        </Button>}
-      placeholder="Search adventures..."
-    />
-  )
-}
-
-const Cards = ({
-  title = 'Goiânia',
-  locale = 'Brasil',
-  bgColor = '#333',
-  height = 100
-}) => {
-  return (
-
     <Box style={styles.card(bgColor, height)}>
       <HStack width="100%" justifyContent="space-between" alignItems="flex-start">
         <VStack space={2}>
           <Text style={styles.textCard}>{title}</Text>
           <HStack alignItems="center">
-            <MapPin color="#fff" weight="fill" style={{ marginRight: 2 }} size={14} />
-            <Text style={{ width: 90 }}>{locale}</Text>
+            <MapPin color="#333367" weight="fill" style={{ marginRight: 2 }} size={14} />
+            <Text style={{ width: 90, color: '#333367' }}>{locale}</Text>
           </HStack>
         </VStack>
         <VStack>
-          <Button style={styles.buttonLike}>
-            <Heart weight="fill" color="#04ac89" size={18} />
+          <Button style={styles.buttonLike} ref={ref} onPress={() => {
+
+          }}>
+            <Heart weight="regular" color="#04ac89" size={18} />
           </Button>
         </VStack>
       </HStack>
@@ -84,8 +49,63 @@ const Cards = ({
   )
 }
 
+
+
+const Search = ({ colors, value, setValue, handleSearch }) => {
+  return (
+    <Input
+      height={50}
+      variant="rounded"
+      style={[{ ...styles.searchInput, backgroundColor: colors.muted[200] }]}
+      value={value}
+      onChangeText={setValue}
+      InputRightElement={
+        <Button onPress={handleSearch} style={styles.searchButton}>
+          <Icon as={Feather} name="search" size={5} color="primary.50" />
+        </Button>}
+      placeholder="Search adventures..."
+    />
+  )
+}
+
 function Home({ navigation, route }) {
   const { colors } = useTheme();
+  const [search, setSearch] = useState('');
+  const dados = [{
+    id: 1,
+    title: 'Mount Kailash',
+    locale: 'Tibet',
+    color: colors.amber[700]
+  },
+  {
+    id: 2,
+    title: 'Pura Bratan',
+    locale: 'Bali',
+    color: colors.emerald[500]
+  },
+  {
+    id: 3,
+    title: 'Berlin TV Tower',
+    locale: 'Berlin',
+    color: colors.fuchsia[500]
+  },
+  {
+    id: 4,
+    title: 'Brooklyn Bridge',
+    locale: 'New York City',
+    color: colors.indigo[500]
+  }];
+  const [lista, setLista] = useState(dados)
+
+  const handleSearch = () => {
+    if (!search) {
+      return setLista(dados)
+    }
+    const findText = lista.filter(item => {
+      return item.locale.indexOf(search) !== -1 || item.title.indexOf(search) !== -1
+    });
+    setLista(findText);
+  }
 
   return (
     <SafeAreaView>
@@ -93,39 +113,27 @@ function Home({ navigation, route }) {
         <Header navigation={navigation} />
         <Box>
           <Text style={styles.title}>Discover</Text>
-          <Search colors={colors} />
+          <Search colors={colors} value={search} setValue={setSearch} handleSearch={handleSearch} />
         </Box>
         <Box mt={4} style={styles.gridCard}>
-          <HStack display={'flex'} space={2}>
-            <VStack space={2}>
-              <Cards
-                title="Mount Kailash"
-                locale="Tibet"
-                bgColor={colors.amber[700]}
-                height={300}
-              />
-              <Cards
-                title="Pura Bratan"
-                locale="Bali"
-                bgColor={colors.emerald[500]}
-                height={180}
-              />
-            </VStack>
-            <VStack space={2}>
-              <Cards
-                title="Berlin TV Tower"
-                locale="Berlin"
-                bgColor={colors.fuchsia[500]}
-                height={180}
-              />
-              <Cards
-                title="Brooklyn Bridge"
-                locale="New York City"
-                bgColor={colors.indigo[500]}
-                height={300}
-              />
-            </VStack>
-          </HStack>
+          <ScrollView style={styles.boxCard}>
+            <HStack flexWrap="wrap">
+              {lista.map((item, index) => {
+
+                return (
+                  <VStack space={2}>
+                    <Cards
+                      key={item.id}
+                      title={item.title}
+                      locale={item.locale}
+                      bgColor={item.color}
+                      height={300}
+                    />
+                  </VStack>
+                )
+              })}
+            </HStack>
+          </ScrollView>
         </Box>
       </VStack>
       <TabsCustom navigation={navigation} route={route} />

@@ -21,10 +21,10 @@ function TabsCustom({ navigation, route }) {
         <Pressable onPress={() => navegar(0)}>
           <House size={24} weight="fill" color={selected === 0 ? '#333367' : '#c3c2d2'} />
         </Pressable>
-        <Pressable onPress={() => navegar(1)}>
+        <Pressable onPress={() => setSelected(1)}>
           <Heart size={24} weight="fill" color={selected === 1 ? '#333367' : '#c3c2d2'} />
         </Pressable>
-        <Pressable onPress={() => navegar(2)}>
+        <Pressable onPress={() => setSelected(2)}>
           <Bookmark size={24} weight="fill" color={selected === 2 ? '#333367' : '#c3c2d2'} />
         </Pressable>
         <Pressable onPress={() => navegar(3)}>

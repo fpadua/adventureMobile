@@ -40,11 +40,15 @@ export const styles = StyleSheet.create({
   gridCard: {
     width: '100%',
   },
+  boxCard: {
+    marginBottom: 250
+  },
   card: (bgColor, height) => ({
-    width: (Dimensions.get('screen').width / 2) - 20,
+    width: (Dimensions.get('screen').width / 2) - 25,
     borderRadius: 20,
     padding: 20,
-    backgroundColor: bgColor ?? '#333',
+    margin: 5,
+    backgroundColor: bgColor,
     height: height
   }),
   textCard: {

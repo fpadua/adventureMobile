@@ -9,8 +9,12 @@ const Stack = createNativeStackNavigator();
 export function Routes() {
   return (
     <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen name="Login" component={Login} options={{ headerShown: false, statusBarColor: '#f6e2bd' }}  />
+      <Stack.Navigator
+        screenOptions={{
+          statusBarStyle: 'dark'
+        }}
+      >
+        <Stack.Screen name="Login" component={Login} options={{ headerShown: false, statusBarColor: '#f6e2bd' }} />
         {/* <Stack.Screen name="Tabs" component={Tabs} options={{ headerShown: false }} /> */}
         <Stack.Screen name="Home" component={Home} options={{ headerShown: false }} />
         <Stack.Screen name="Perfil" component={Perfil} options={{ headerShown: false }} />

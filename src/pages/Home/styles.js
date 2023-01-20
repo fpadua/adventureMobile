@@ -46,23 +46,32 @@ export const styles = StyleSheet.create({
   card: (bgColor, height) => ({
     width: (Dimensions.get('screen').width / 2) - 25,
     borderRadius: 20,
-    padding: 20,
     margin: 5,
     backgroundColor: bgColor,
-    height: height
+    height: height,
+    overflow: 'hidden',
+    position: 'relative'
   }),
+  imageCard: {
+    width: '100%',
+    height: '100%',
+    position: 'absolute',
+    opacity: 0.4,
+    top: 0,
+    left: 0
+  },
   textCard: {
     width: 100,
     flexWrap: 'wrap',
     fontSize: 24,
     fontWeight: 'bold',
-    color: '#333367',
+    color: '#fff',
     lineHeight: 24,
   },
   buttonLike: {
     width: 40,
     height: 40,
-    backgroundColor: '#fff',
+    backgroundColor: '#04ac89',
     borderRadius: 50
   }
 

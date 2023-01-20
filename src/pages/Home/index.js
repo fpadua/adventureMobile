@@ -9,7 +9,8 @@ import {
   Input,
   useTheme,
   ScrollView,
-  SectionList
+  SectionList,
+  Image
 } from "native-base";
 import { useNavigation, useRoute } from '@react-navigation/native';
 import { Feather } from '@expo/vector-icons'
@@ -19,29 +20,35 @@ import { Heart, MapPin } from 'phosphor-react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import TabsCustom from "../../components/TabsCustom";
 import { Header } from "../../components/Header";
+import foto1 from '../../../assets/images/1.png';
+import foto2 from '../../../assets/images/2.png';
+import foto3 from '../../../assets/images/3.png';
+import foto4 from '../../../assets/images/4.png';
+import { ImageBackground } from "react-native";
 
-const Cards = ({ title, locale, bgColor, height }) => {
-  const ref = useRef(); 
-  
+const Cards = ({ title, locale, bgColor, height, image }) => {
+  const ref = useRef();
+
   const handleLike = () => {
-    
+
   }
 
   return (
     <Box style={styles.card(bgColor, height)}>
-      <HStack width="100%" justifyContent="space-between" alignItems="flex-start">
+      <Image source={image} style={styles.imageCard} />
+      <HStack width="100%" justifyContent="space-between" p={5} alignItems="flex-start">
         <VStack space={2}>
           <Text style={styles.textCard}>{title}</Text>
           <HStack alignItems="center">
-            <MapPin color="#333367" weight="fill" style={{ marginRight: 2 }} size={14} />
-            <Text style={{ width: 90, color: '#333367' }}>{locale}</Text>
+            <MapPin color="#fff" weight="fill" style={{ marginRight: 2 }} size={14} />
+            <Text style={{ width: 90, color: '#fff' }}>{locale}</Text>
           </HStack>
         </VStack>
         <VStack>
           <Button style={styles.buttonLike} ref={ref} onPress={() => {
 
           }}>
-            <Heart weight="regular" color="#04ac89" size={18} />
+            <Heart weight="regular" color="#fff" size={18} />
           </Button>
         </VStack>
       </HStack>
@@ -75,25 +82,29 @@ function Home({ navigation, route }) {
     id: 1,
     title: 'Mount Kailash',
     locale: 'Tibet',
-    color: colors.amber[700]
+    color: colors.amber[700],
+    image: foto1
   },
   {
     id: 2,
     title: 'Pura Bratan',
     locale: 'Bali',
-    color: colors.emerald[500]
+    color: colors.emerald[500],
+    image: foto2
   },
   {
     id: 3,
     title: 'Berlin TV Tower',
     locale: 'Berlin',
-    color: colors.fuchsia[500]
+    color: colors.fuchsia[500],
+    image: foto3
   },
   {
     id: 4,
     title: 'Brooklyn Bridge',
     locale: 'New York City',
-    color: colors.indigo[500]
+    color: colors.indigo[500],
+    image: foto4
   }];
   const [lista, setLista] = useState(dados)
 
@@ -119,7 +130,6 @@ function Home({ navigation, route }) {
           <ScrollView style={styles.boxCard}>
             <HStack flexWrap="wrap">
               {lista.map((item, index) => {
-
                 return (
                   <VStack space={2}>
                     <Cards
@@ -127,6 +137,7 @@ function Home({ navigation, route }) {
                       title={item.title}
                       locale={item.locale}
                       bgColor={item.color}
+                      image={item.image}
                       height={300}
                     />
                   </VStack>

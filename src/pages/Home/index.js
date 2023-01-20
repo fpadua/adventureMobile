@@ -25,6 +25,7 @@ import foto2 from '../../../assets/images/2.png';
 import foto3 from '../../../assets/images/3.png';
 import foto4 from '../../../assets/images/4.png';
 import { ImageBackground } from "react-native";
+import { theme } from "../../../assets/theme/default";
 
 const Cards = ({ title, locale, bgColor, height, image }) => {
   const ref = useRef();
@@ -35,7 +36,7 @@ const Cards = ({ title, locale, bgColor, height, image }) => {
 
   return (
     <Box style={styles.card(bgColor, height)}>
-      <Image source={image} style={styles.imageCard} />
+      <Image source={image} style={styles.imageCard} alt={title} />
       <HStack width="100%" justifyContent="space-between" p={5} alignItems="flex-start">
         <VStack space={2}>
           <Text style={styles.textCard}>{title}</Text>
@@ -48,7 +49,7 @@ const Cards = ({ title, locale, bgColor, height, image }) => {
           <Button style={styles.buttonLike} ref={ref} onPress={() => {
 
           }}>
-            <Heart weight="regular" color="#fff" size={18} />
+            <Heart weight="fill" color={theme.colors.rose[500]} size={18} />
           </Button>
         </VStack>
       </HStack>

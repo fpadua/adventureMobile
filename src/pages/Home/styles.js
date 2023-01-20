@@ -71,7 +71,7 @@ export const styles = StyleSheet.create({
   buttonLike: {
     width: 40,
     height: 40,
-    backgroundColor: '#04ac89',
+    backgroundColor: 'rgba(255, 255, 255, 0.5)',
     borderRadius: 50
   }
 
